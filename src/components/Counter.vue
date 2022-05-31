@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
 
@@ -32,10 +32,7 @@ export default {
     incrementBy( value ) {
       this.$store.commit('incrementBy', value)
     },
-
-    incrementRandomInt() {
-      this.$store.dispatch('incrementRandomInt')
-    }
+    ...mapActions(['incrementRandomInt'])
   }
 }
 </script>
