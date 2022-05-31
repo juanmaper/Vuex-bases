@@ -5,11 +5,13 @@
 
   <button @click="increment">+1</button>
   <button @click="incrementBy(5)">+5</button>
-  <button @click="incrementRandomInt">Random</button>
+  <button @click="incrementRandomInt" :disabled="isLoading">Random</button>
 
   <h1>mapState</h1>
   <h2>mapState: {{ count }}</h2>
   <h2>lastMutation: {{ lastMutation }}</h2>
+
+  <h2>Direct getter: {{ $store.getters.squaredCount }}</h2>
 </template>
 
 <script>
@@ -21,7 +23,7 @@ export default {
     countComputed() {
       return this.$store.state.count
     },
-    ...mapState(['count', 'lastMutation'])
+    ...mapState(['count', 'lastMutation', 'isLoading'])
   },
   
   methods: {
